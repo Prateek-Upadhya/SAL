@@ -1,6 +1,6 @@
 from SAL.Neighbour import Neighbour
 from SAL.Degree import Degree
-
+from SAL.NodeView import NodeView
 
 class Graph:
     node_dict = dict
@@ -121,3 +121,6 @@ class Graph:
 
     def number_of_nodes(self):
         return len(self._node)
+    
+    def nodes(self):
+        return NodeView(self)
