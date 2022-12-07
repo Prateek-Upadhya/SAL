@@ -1,6 +1,8 @@
 from SAL.BetweennessCentrality import betweenness_centrality
 from SAL.DegreeCentrality import degree_centrality
 from SAL.EigenvectorCentrality import eigenvector_centrality
+from SAL.ClosenessCentrality import closeness_centrality
+
 
 def call_algorithm(G, k, method):
     if method == "betweenness":
@@ -27,6 +29,13 @@ def call_algorithm(G, k, method):
         eigenvector_dict = Convert(centrality, dictionary) 
 
         return eigenvector_dict
+    
+    elif method == "closeness_centrality":
+        centrality = sorted(closeness_centrality(G).items(), key=lambda x: x[1], reverse=True)[0:k]
+        dictionary = {}
+        closeness_dict = Convert(centrality, dictionary) 
+        return closeness_dict
+    
     else:
         return "This method is not supported."
     
