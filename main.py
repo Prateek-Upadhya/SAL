@@ -25,6 +25,10 @@ def get_top_K_nodes(DATASET_PATH, K, METHOD):
     elif METHOD == "betweenness":
         for i in range(K):
             print(f"User ID : {str(userIds[i]):9s}, Betweenness value: {vals[i]:.3f}")
+            
+    elif METHOD == "eigenvector_centrality":
+        for i in range(K):
+            print(f"User ID : {str(userIds[i]):9s}, Eigenvector Centrality value: {vals[i]:.3f}")
 
 
 

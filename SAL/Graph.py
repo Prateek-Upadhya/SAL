@@ -118,3 +118,6 @@ class Graph:
 
     def adjacency(self):
         return iter(self._adj.items())
+
+    def number_of_nodes(self):
+        return len(self._node)
