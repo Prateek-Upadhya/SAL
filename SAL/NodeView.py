@@ -14,9 +14,8 @@ class NodeView(Mapping, Set):
 
     def __getitem__(self, n):
         if isinstance(n, slice):
-            raise nx.NetworkXError(
+            raise Exception(
                 f"{type(self).__name__} does not support slicing, "
-                f"try list(G.nodes)[{n.start}:{n.stop}:{n.step}]"
             )
         return self._nodes[n]
 
