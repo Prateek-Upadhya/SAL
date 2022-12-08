@@ -8,32 +8,40 @@ def get_top_K_nodes(DATASET_PATH, K, METHOD):
     relations = pd.read_csv(DATASET_PATH, sep=' ')
     G = convert_from_pandasDF_to_graph(relations, source='source', target='target')
     
-  
     res = call_algorithm(G, K, METHOD)
-    
     if(type(res) == str):
         print(res)
-    else:
+
+    if METHOD == "degree_centrality": 
         userIds = list(res.keys())
         vals = list(res.values())
-    
-    
-    if METHOD == "degree_centrality": 
         for i in range(K):
-            print(f"User ID : {str(userIds[i]):9s}, Degree Centrality value: {vals[i]:.3f}") 
-    
+            print(f"User ID : {str(userIds[i]):9s}, Degree Centrality value: {vals[i]:.3f}")
+
     elif METHOD == "betweenness":
+        userIds = list(res.keys())
+        vals = list(res.values())
         for i in range(K):
             print(f"User ID : {str(userIds[i]):9s}, Betweenness value: {vals[i]:.3f}")
-            
+
     elif METHOD == "eigenvector_centrality":
+        userIds = list(res.keys())
+        vals = list(res.values())
         for i in range(K):
             print(f"User ID : {str(userIds[i]):9s}, Eigenvector Centrality value: {vals[i]:.3f}")
-            
+
     elif METHOD == "closeness_centrality":
+        userIds = list(res.keys())
+        vals = list(res.values())
         for i in range(K):
             print(f"User ID : {str(userIds[i]):9s}, Closeness Centrality value: {vals[i]:.3f}")
-
+            
+    elif METHOD=="kernighan_lin_bisection":
+        subset_1= res["subset_1"]
+        subset_2= res["subset_2"]
+        print("\nSubset-1\tSubset-2\n------------------------")
+        for i in range(K):
+            print(f"{subset_1[i]}\t{subset_2[i]}")
 
 
 def example():

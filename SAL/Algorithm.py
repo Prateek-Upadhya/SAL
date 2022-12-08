@@ -2,7 +2,7 @@ from SAL.BetweennessCentrality import betweenness_centrality
 from SAL.DegreeCentrality import degree_centrality
 from SAL.EigenvectorCentrality import eigenvector_centrality
 from SAL.ClosenessCentrality import closeness_centrality
-
+from SAL.KernighanLinBisection import kernighan_lin_bisection
 
 def call_algorithm(G, k, method):
     if method == "betweenness":
@@ -36,6 +36,11 @@ def call_algorithm(G, k, method):
         closeness_dict = Convert(centrality, dictionary) 
         return closeness_dict
     
+    elif method =="kernighan_lin_bisection":
+        get_partition = kernighan_lin_bisection(G)
+        dictionary = {"subset_1":list(get_partition[0])[0:k], "subset_2":list(get_partition[1])[0:k]}
+        return dictionary
+        
     else:
         return "This method is not supported."
     
